@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC  "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.blade.ssm.dao.ImageDao">
+
+    <!-- ============================= Result ============================= -->
+    <resultMap id="ImageFindResult" type="com.blade.ssm.model.Image">
+        <id column="image_id" jdbcType="BIGINT" property="imageId" />
+        <result column="image_name" jdbcType="VARCHAR" property="imageName" />
+        <result column="image_type" jdbcType="VARCHAR" property="imageType" />
+        <result column="image_size" jdbcType="BIGINT" property="imageSize" />
+        <result column="image_location" jdbcType="VARCHAR" property="imageLocation" />
+        <result column="like_count" jdbcType="BIGINT" property="likeCount" />
+        <result column="download_count" jdbcType="BIGINT" property="downloadCount" />
+        <result column="uploader_id" jdbcType="BIGINT" property="uploaderId" />
+        <result column="upload_time" jdbcType="DATE" property="uploadTime" />
+        <result column="update_time" jdbcType="DATE" property="updateTime" /><!-- 这里的date返回值似乎是个坑 -->
+    </resultMap>
+
+    <!-- ============================= INSERT ============================= -->
+    <insert id="save" useGeneratedKeys="true" keyProperty="id" >
+        INSERT INTO t_image( image_id, image_name, image_type, image_size, image_location,
+                             like_count, download_count, uploader_id, upload_time, update_time)
+        VALUES ( #{imageId}, #{imageName}, #{imageType}, #{imageSize}, #{imageLocation},
+                 #{likeCount}, #{downloadCount}, #{uploaderId}, #{uploadTime}, #{updateTime})
+    </insert>
+
+    <insert id="saveBatch">
+        INSERT INTO t_image( image_id, image_name, image_type, image_size, image_location,
+                             like_count, download_count, uploader_id, upload_time, update_time)
+        <foreach collection="list" item="item" index="index" separator="UNION ALL">
+            SELECT  #{item.imageId}, #{item.imageName}, #{item.imageType}, #{item.imageSize}, #{item.imageLocation},
+                    #{item.likeCount}, #{item.downloadCount}, #{item.uploaderId}, #{item.uploadTime}, #{item.updateTime}
+            FROM DUAL
+        </foreach>
+    </insert>
+
+    <!-- extra insert with auto primary key -->
+    <insert id="saveIgnorePK" useGeneratedKeys="true" keyProperty="imageId" >
+        INSERT INTO t_image( image_id, image_name, image_type, image_size, image_location,
+                             like_count, download_count, uploader_id, upload_time, update_time)
+        VALUES ( (select id from (select max(image_id)+1 as id from t_image) as a),
+                 #{imageName}, #{imageType}, #{imageSize}, #{imageLocation}, #{likeCount}, #{downloadCount}, #{uploaderId}, #{uploadTime}, #{updateTime})
+    </insert>
+
+    <!-- extra insert with auto primary key2 -->
+    <insert id="saveIgnoreAndReturnPK" useGeneratedKeys="true" keyProperty="imageId" >
+        <!-- 这里的id会覆盖原参数的 -->
+        <selectKey order="BEFORE" resultType="java.lang.Integer" keyProperty="imageId">
+            select max(image_id)+5 from t_image;
+        </selectKey>
+        INSERT INTO t_image( image_id, image_name, image_type, image_size, image_location,
+                             like_count, download_count, uploader_id, upload_time, update_time)
+        VALUES ( #{imageId}, #{imageName}, #{imageType}, #{imageSize}, #{imageLocation},
+                #{likeCount}, #{downloadCount}, #{uploaderId}, #{uploadTime}, #{updateTime});
+
+    </insert>
+
+    <!-- ============================= UPDATE ============================= -->
+    <update id="update">
+        UPDATE t_image
+        <set>
+            image_name     =#{imageName},
+            image_type     =#{imageType},
+            image_size     =#{imageSize},
+            image_location =#{imageLocation},
+            like_count     =#{likeCount},
+            download_count =#{downloadCount},
+            uploader_id    =#{uploaderId},
+            upload_time    =#{uploadTime},
+            update_time    =#{updateTime}
+        </set>
+        WHERE image_id=#{imageId}
+    </update>
+
+    <update id="updateIgnoreNull">
+        UPDATE t_image
+        <set>
+            <if test="imageName!= null">    image_name=#{imageName},</if>
+            <if test="imageType!= null">    image_type=#{imageType},</if>
+            <if test="imageSize!= null">    image_size=#{imageSize},</if>
+            <if test="imageLocation!= null">image_location=#{imageLocation},</if>
+            <if test="likeCount!= null">    like_count=#{likeCount},</if>
+            <if test="downloadCount!= null">download_count=#{downloadCount},</if>
+            <if test="uploaderId!= null">   uploader_id=#{uploaderId},</if>
+            <if test="uploadTime!= null">   upload_time=#{uploadTime},</if>
+            <if test="updateTime!= null">   update_time=#{updateTime},</if>
+        </set>
+        WHERE image_id=#{imageId}
+    </update>
+
+    <update id="updateBatch" parameterType="java.util.List">
+        <foreach collection="list" item="item" index="index"  separator=";">
+            UPDATE t_image
+            <set>
+                image_name     =#{item.imageName},
+                image_type     =#{item.imageType},
+                image_size     =#{item.imageSize},
+                image_location =#{item.imageLocation},
+                like_count     =#{item.likeCount},
+                download_count =#{item.downloadCount},
+                uploader_id    =#{item.uploaderId},
+                upload_time    =#{item.uploadTime},
+                update_time    =#{item.updateTime},
+            </set>
+            WHERE image_id=#{item.imageId}
+        </foreach>
+    </update>
+
+    <!-- ============================= DELETE ============================= -->
+    <delete id="delete">
+        DELETE FROM t_image
+        WHERE image_id=#{imageId}
+    </delete>
+
+    <delete id="deleteBatch">
+        DELETE FROM t_image
+        WHERE
+        <foreach collection="list" item="item" index="index" open="(" separator="OR" close=")">
+            (image_id=#{item.imageId} )
+        </foreach>
+    </delete>
+
+    <delete id="deleteByPK">
+        DELETE FROM t_image
+        WHERE image_id=#{imageId}
+    </delete>
+
+    <delete id="deleteAll">
+        DELETE FROM t_image
+    </delete>
+
+    <!-- ============================= SELECT ============================= -->
+    <select id="count" resultType="java.lang.Long">
+        SELECT COUNT(1) FROM t_image
+    </select>
+
+    <select id="findByPK" resultMap="ImageFindResult">
+        SELECT * FROM t_image
+        WHERE image_id=#{imageId}
+    </select>
+
+    <select id="find" resultMap="ImageFindResult">
+        SELECT  *
+        FROM t_image
+        <where>
+            <if test="imageName!= null">
+                AND image_name = #{imageName}
+            </if>
+            <if test="imageType!= null">
+                AND image_type = #{imageType}
+            </if>
+            <if test="imageSize!= null">
+                AND image_size = #{imageSize}
+             </if>
+            <if test="imageLocation!= null">
+                AND image_location = #{imageLocation}
+            </if>
+            <if test="likeCount!= null">
+                AND like_count = #{likeCount}
+            </if>
+            <if test="downloadCount!= null">
+                AND download_count = #{downloadCount}
+            </if>
+            <if test="uploaderId!= null">
+                AND uploader_id = #{uploaderId}
+             </if>
+            <if test="uploadTime!= null">
+                AND upload_time = #{uploadTime}
+            </if>
+            <if test="updateTime!= null">
+                AND update_time = #{updateTime}
+            </if>
+        </where>
+    </select>
+
+</mapper>
