@@ -24,3 +24,5 @@ hs_err_pid*
 
 # 所有的编译目标
 /**/target/
+/**/out/
+
