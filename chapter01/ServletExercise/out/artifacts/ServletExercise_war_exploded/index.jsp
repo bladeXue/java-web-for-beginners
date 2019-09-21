@@ -11,6 +11,11 @@
     <title>$Title$</title>
   </head>
   <body>
+
+  <a href="/HelloWorld">/HelloWorld</a>
+  <a href="/HelloForm">/HelloForm</a>
+  <a href="/form.jsp">form.jsp</a>
+
   $END$
   </body>
 </html>

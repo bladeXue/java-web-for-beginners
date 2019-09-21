@@ -14,4 +14,18 @@
         <url-pattern>/HelloWorld</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>HelloForm</servlet-name>
+        <servlet-class>com.blade.servlet.HelloForm</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>HelloForm</servlet-name>
+        <url-pattern>/HelloForm</url-pattern>
+    </servlet-mapping>
+
+
+
+
+
 </web-app>
