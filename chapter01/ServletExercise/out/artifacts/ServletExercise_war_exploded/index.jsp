@@ -12,9 +12,9 @@
   </head>
   <body>
 
-  <a href="/HelloWorld">/HelloWorld</a>
-  <a href="/HelloForm">/HelloForm</a>
-  <a href="/form.jsp">form.jsp</a>
+  <a href="/HelloWorld">/HelloWorld</a><br>
+  <a href="/HelloForm">/HelloForm</a><br>
+  <a href="/form.jsp">form.jsp</a><br>
 
   $END$
   </body>
