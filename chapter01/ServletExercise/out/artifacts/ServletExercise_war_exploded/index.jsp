@@ -15,6 +15,7 @@
   <a href="/HelloWorld">/HelloWorld</a><br>
   <a href="/HelloForm">/HelloForm</a><br>
   <a href="/form.jsp">form.jsp</a><br>
+  <a href="/DisplayHeader">/DisplayHeader</a><br>
 
   $END$
   </body>

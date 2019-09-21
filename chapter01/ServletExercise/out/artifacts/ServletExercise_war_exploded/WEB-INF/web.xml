@@ -44,4 +44,14 @@
         <url-pattern>/ReadParams</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>DisplayHeader</servlet-name>
+        <servlet-class>com.blade.servlet.DisplayHeader</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>DisplayHeader</servlet-name>
+        <url-pattern>/DisplayHeader</url-pattern>
+    </servlet-mapping>
+
 </web-app>
