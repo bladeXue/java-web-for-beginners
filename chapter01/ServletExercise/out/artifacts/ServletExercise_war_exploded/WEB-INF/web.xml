@@ -8,7 +8,6 @@
         <servlet-name>HelloWorld</servlet-name>
         <servlet-class>com.blade.servlet.HelloWorld</servlet-class>
     </servlet>
-
     <servlet-mapping>
         <servlet-name>HelloWorld</servlet-name>
         <url-pattern>/HelloWorld</url-pattern>
@@ -18,7 +17,6 @@
         <servlet-name>HelloForm</servlet-name>
         <servlet-class>com.blade.servlet.HelloForm</servlet-class>
     </servlet>
-
     <servlet-mapping>
         <servlet-name>HelloForm</servlet-name>
         <url-pattern>/HelloForm</url-pattern>
@@ -28,7 +26,6 @@
         <servlet-name>CheckBox</servlet-name>
         <servlet-class>com.blade.servlet.CheckBox</servlet-class>
     </servlet>
-
     <servlet-mapping>
         <servlet-name>CheckBox</servlet-name>
         <url-pattern>/CheckBox</url-pattern>
@@ -38,7 +35,6 @@
         <servlet-name>ReadParams</servlet-name>
         <servlet-class>com.blade.servlet.ReadParams</servlet-class>
     </servlet>
-
     <servlet-mapping>
         <servlet-name>ReadParams</servlet-name>
         <url-pattern>/ReadParams</url-pattern>
@@ -48,10 +44,18 @@
         <servlet-name>DisplayHeader</servlet-name>
         <servlet-class>com.blade.servlet.DisplayHeader</servlet-class>
     </servlet>
-
     <servlet-mapping>
         <servlet-name>DisplayHeader</servlet-name>
         <url-pattern>/DisplayHeader</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Refresh</servlet-name>
+        <servlet-class>com.blade.servlet.Refresh</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Refresh</servlet-name>
+        <url-pattern>/Refresh</url-pattern>
     </servlet-mapping>
 
 </web-app>

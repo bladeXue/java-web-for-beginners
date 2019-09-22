@@ -4,11 +4,24 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
 
+    <filter>
+        <filter-name>LoginFilter</filter-name>
+        <filter-class>com.blade.filter.LoginFilter</filter-class>
+        <init-param>
+            <param-name>Site</param-name>
+            <param-value>w3cschool在线教程</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping><!-- 过滤器作用范围 -->
+        <filter-name>LoginFilter</filter-name>
+        <url-pattern>/**</url-pattern>
+    </filter-mapping>
+    <!-- 要小心的是，Servlet中过滤器是由filter-mapping决定先后顺序的 -->
+
     <servlet>
         <servlet-name>HelloWorld</servlet-name>
         <servlet-class>com.blade.servlet.HelloWorld</servlet-class>
     </servlet>
-
     <servlet-mapping>
         <servlet-name>HelloWorld</servlet-name>
         <url-pattern>/HelloWorld</url-pattern>
@@ -18,7 +31,6 @@
         <servlet-name>HelloForm</servlet-name>
         <servlet-class>com.blade.servlet.HelloForm</servlet-class>
     </servlet>
-
     <servlet-mapping>
         <servlet-name>HelloForm</servlet-name>
         <url-pattern>/HelloForm</url-pattern>
@@ -28,7 +40,6 @@
         <servlet-name>CheckBox</servlet-name>
         <servlet-class>com.blade.servlet.CheckBox</servlet-class>
     </servlet>
-
     <servlet-mapping>
         <servlet-name>CheckBox</servlet-name>
         <url-pattern>/CheckBox</url-pattern>
@@ -38,7 +49,6 @@
         <servlet-name>ReadParams</servlet-name>
         <servlet-class>com.blade.servlet.ReadParams</servlet-class>
     </servlet>
-
     <servlet-mapping>
         <servlet-name>ReadParams</servlet-name>
         <url-pattern>/ReadParams</url-pattern>
@@ -48,10 +58,18 @@
         <servlet-name>DisplayHeader</servlet-name>
         <servlet-class>com.blade.servlet.DisplayHeader</servlet-class>
     </servlet>
-
     <servlet-mapping>
         <servlet-name>DisplayHeader</servlet-name>
         <url-pattern>/DisplayHeader</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Refresh</servlet-name>
+        <servlet-class>com.blade.servlet.Refresh</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Refresh</servlet-name>
+        <url-pattern>/Refresh</url-pattern>
     </servlet-mapping>
 
 </web-app>
