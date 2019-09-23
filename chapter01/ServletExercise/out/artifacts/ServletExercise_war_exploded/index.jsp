@@ -17,6 +17,10 @@
   <a href="/form.jsp">form.jsp</a><br>
   <a href="/DisplayHeader">/DisplayHeader</a><br>
   <a href="/Refresh">/Refresh</a><br>
+  <a href="/CookieServlet">/CookieServlet</a><br>
+
+  <a href="/exception">启动一个异常</a><br>
+  <a href="/nothing">一个不存在的页面</a><br>
 
   $END$
   </body>

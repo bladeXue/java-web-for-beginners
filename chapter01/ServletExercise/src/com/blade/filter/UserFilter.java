@@ -3,7 +3,7 @@ package com.blade.filter;
 import javax.servlet.*;
 import java.io.IOException;
 
-public class LoginFilter implements Filter {
+public class UserFilter implements Filter {
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
 
