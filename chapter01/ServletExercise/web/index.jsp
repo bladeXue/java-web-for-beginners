@@ -22,6 +22,8 @@
   <a href="/exception">启动一个异常</a><br>
   <a href="/nothing">一个不存在的页面</a><br>
 
+  <a href="/user">用户页面</a><br>
+
   $END$
   </body>
 </html>

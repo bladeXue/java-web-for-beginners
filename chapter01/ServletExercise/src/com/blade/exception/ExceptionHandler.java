@@ -8,7 +8,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Date;
 
+/**
+ * 异常处理机本质上就是一个特殊的Servlet
+ */
 public class ExceptionHandler extends HttpServlet {
 
     private ErrorEntity error;
@@ -21,6 +25,7 @@ public class ExceptionHandler extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+        System.out.println("捕获异常 at "+new Date());
         System.out.println("处理异常数据-开始");
 
         error.parseRequestParams(req);

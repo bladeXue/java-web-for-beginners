@@ -74,6 +74,15 @@
 
     <!-- **********一般Servlet********** -->
     <servlet>
+        <servlet-name>User</servlet-name>
+        <servlet-class>com.blade.servlet.UserServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>User</servlet-name>
+        <url-pattern>/user</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>HelloWorld</servlet-name>
         <servlet-class>com.blade.servlet.HelloWorld</servlet-class>
     </servlet>

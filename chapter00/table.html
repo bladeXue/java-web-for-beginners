@@ -6,6 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>用户管理</title>
+
+    <style>
+        #refresh-btn {
+            position: absolute;
+            right: 20px;
+        }
+        
+        #tools {
+            min-height: 40px;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -14,7 +26,22 @@
         <h1>简单的用户管理实例</h1>
         <p>当前时间是：</p>
     </div>
-    <table border="1" align="center" width="1200">
+
+    <div id="tools" align="center" width="1200">
+        <button id="refresh-btn" onclick="javascript: location.reload()">刷新页面</button>
+        <!-- post请求提交表单 -->
+        <i>**根据学号提交用户，学号不存在则创建新用户，存在则更新用户**</i>
+        <form action="/user" method="POST">
+            <label>学号：</label><input type="text" name="uid" />
+            <label>用户名：</label><input type="text" name="username" />
+            <label>昵称</label><input type="text" name="nickname" />
+            <input type="submit" value="提交用户" />
+            <br><br>
+
+        </form>
+    </div>
+
+    <table border="1 " align="center " width="1200 ">
         <tr>
             <th>编号</th>
             <th>学号</th>
@@ -34,6 +61,7 @@
             <td>233333</td>
         </tr>
     </table>
+
 </body>
 
 </html>
