@@ -7,8 +7,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cec1782a-eb99-4692-8d93-8a307db722cd" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -262,6 +260,8 @@
       <workItem from="1569231881913" duration="5087000" />
       <workItem from="1569551869256" duration="15601000" />
       <workItem from="1570497275675" duration="2949000" />
+      <workItem from="1570841999493" duration="1189000" />
+      <workItem from="1570844005420" duration="588000" />
     </task>
     <servers />
   </component>
@@ -273,7 +273,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
