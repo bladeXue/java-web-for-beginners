@@ -2,7 +2,6 @@ package com.blade.servlet;
 
 import com.blade.jdbc.UserDao;
 import com.blade.model.User;
-import sun.awt.image.ImageWatched;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

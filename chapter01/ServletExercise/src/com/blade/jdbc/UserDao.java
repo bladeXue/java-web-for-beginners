@@ -1,7 +1,6 @@
 package com.blade.jdbc;
 
 import com.blade.model.User;
-import com.sun.org.apache.regexp.internal.RE;
 
 import java.sql.*;
 import java.util.LinkedList;
